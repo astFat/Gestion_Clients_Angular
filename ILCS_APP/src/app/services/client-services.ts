@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +28,8 @@ export class ClientServices {
 
   modifierClient(client: any) {
     return this.http.put(`http://localhost:9006/clients/${client.id}`, client);
+  }
+  getClientById(id: number): Observable<any> {
+    return this.http.get(`http://localhost:9006/clients/${id}`);
   }
 }
